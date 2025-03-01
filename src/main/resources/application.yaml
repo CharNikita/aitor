@@ -1,1 +1,6 @@
-spring.application.name=aitor
+spring:
+    application:
+        name: aitor
+bot:
+    api-token: ${BOT_TOKEN}
+    name: "KekitaBot"

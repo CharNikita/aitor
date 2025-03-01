@@ -18,6 +18,8 @@ repositories {
 }
 
 dependencies {
+    implementation("org.telegram:telegrambots:6.8.0")
+
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
