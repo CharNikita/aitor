@@ -34,11 +34,11 @@ public class TelegramBot extends TelegramLongPollingBot {
                 .filter(handler -> handler.isAccept(update))
                 .map(handler -> handler.handle(update))
                 .forEach(method -> {
-                    try {
-                        execute(method);
-                    } catch (TelegramApiException e) {
-                        logger.error(e.getMessage());
-                    }
+//                    try {
+//                        execute(method);
+//                    } catch (TelegramApiException e) {
+//                        logger.error(e.getMessage());
+//                    }
                 });
         } finally {
             MDC.clear();

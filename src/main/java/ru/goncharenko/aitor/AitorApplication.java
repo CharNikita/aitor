@@ -26,4 +26,11 @@ public class AitorApplication {
         }
         return telegramBotsApi;
     }
+
+//    @Bean
+//    public VectorStore vectorStore(EmbeddingModel embeddingModel) {
+//        return SimpleVectorStore
+//            .builder(embeddingModel)
+//            .build();
+//    }
 }
