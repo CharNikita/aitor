@@ -40,6 +40,7 @@ public class LoreHandler implements TelegramUpdateHandler {
 
         return SendMessage.builder()
             .chatId(update.getMessage().getChatId())
+            .replyToMessageId(update.getMessage().getMessageId())
             .text(modelResponse)
             .build();
     }
