@@ -1,11 +1,7 @@
 package ru.goncharenko.aitor;
 
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.client.DefaultChatClientBuilder;
-import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
-import org.springframework.ai.chat.client.advisor.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.model.ChatModel;
-import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
@@ -34,12 +30,8 @@ public class AitorApplication {
     }
 
     @Bean
-    public ChatClient chatClient(
-        ChatModel chatModel,
-        VectorStore vectorStore
-    ) {
+    public ChatClient chatClient(ChatModel chatModel) {
         return ChatClient.builder(chatModel)
-            .defaultAdvisors(new QuestionAnswerAdvisor(vectorStore))
             .build();
     }
 }

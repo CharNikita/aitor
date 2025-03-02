@@ -27,7 +27,7 @@ public class EmbeddingHandler implements TelegramUpdateHandler {
             logger.info("Update has no message");
             return false;
         }
-        return true;
+        return !update.getMessage().getText().startsWith("/");
     }
 
     @Override
