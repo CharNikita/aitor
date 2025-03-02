@@ -28,6 +28,7 @@ dependencies {
 
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 
     implementation(platform("org.springframework.ai:spring-ai-bom:1.0.0-SNAPSHOT"))
     implementation("org.springframework.ai:spring-ai-ollama-spring-boot-starter")

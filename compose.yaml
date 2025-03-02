@@ -17,6 +17,12 @@ services:
                 target: /qdrant/config/production.yaml
         volumes:
             - ./qdrant_data:/qdrant/storage
+    mongo:
+        image: mongo:8
+        ports:
+            - "27017:27017"
+        volumes:
+            - ./mongo_data:/var/lib/mongodb/data
 
 configs:
     qdrant_config:
