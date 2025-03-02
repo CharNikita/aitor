@@ -23,7 +23,7 @@ public class EmbeddingHandler implements TelegramUpdateHandler {
 
     @Override
     public boolean isAccept(Update update) {
-        if (update.getMessage() == null && update.getMessage().getText() == null) {
+        if (update.getMessage() == null || update.getMessage().getText() == null) {
             logger.info("Update has no message");
             return false;
         }
