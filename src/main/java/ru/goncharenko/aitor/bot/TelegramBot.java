@@ -9,6 +9,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class TelegramBot extends TelegramLongPollingBot {
@@ -33,12 +34,13 @@ public class TelegramBot extends TelegramLongPollingBot {
             handlerList.stream()
                 .filter(handler -> handler.isAccept(update))
                 .map(handler -> handler.handle(update))
+                .filter(Objects::nonNull)
                 .forEach(method -> {
-//                    try {
-//                        execute(method);
-//                    } catch (TelegramApiException e) {
-//                        logger.error(e.getMessage());
-//                    }
+                    try {
+                        execute(method);
+                    } catch (TelegramApiException e) {
+                        logger.error(e.getMessage());
+                    }
                 });
         } finally {
             MDC.clear();
