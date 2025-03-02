@@ -1,6 +1,7 @@
 package ru.goncharenko.aitor;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -32,6 +33,8 @@ public class AitorApplication {
     @Bean
     public ChatClient chatClient(ChatModel chatModel) {
         return ChatClient.builder(chatModel)
+            .defaultSystem("Ты бот-лоровед который знает всё об этом чате. Лор - это вся инфромация которая есть в чате")
+            .defaultAdvisors(new SimpleLoggerAdvisor())
             .build();
     }
 }

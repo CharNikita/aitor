@@ -17,3 +17,7 @@ spring:
 bot:
     api-token: ${BOT_TOKEN}
     name: "KekitaBot"
+
+logging:
+    level:
+        org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor: info
