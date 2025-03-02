@@ -62,6 +62,7 @@ public class LoreHandler implements TelegramUpdateHandler {
                     vectorStore,
                     SearchRequest.builder()
                         .filterExpression("chatId == '%s' ".formatted(chatId))
+                        .similarityThreshold(0.5d)
                         .build(),
                     USER_TEXT_ADVISE
                 )

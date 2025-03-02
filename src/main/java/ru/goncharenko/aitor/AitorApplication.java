@@ -37,8 +37,8 @@ public class AitorApplication {
         UserInformationTool tool
     ) {
         return ChatClient.builder(chatModel)
-            .defaultSystem("Ты бот-лоровед который знает всё об этом чате. Лор - это вся инфромация которая есть в чате")
-            .defaultTools(tool)
+            .defaultSystem("Ты бот-лоровед который знает всё об этом чате. Лор - это вся информация которая есть в чате")
+            //.defaultTools(tool)
             .defaultAdvisors(new SimpleLoggerAdvisor())
             .build();
     }
