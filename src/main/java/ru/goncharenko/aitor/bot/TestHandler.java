@@ -12,7 +12,7 @@ public class TestHandler implements TelegramUpdateHandler {
     private final static Logger logger = LoggerFactory.getLogger(TestHandler.class);
 
     @Override
-    public Boolean isAccept(Update update) {
+    public boolean isAccept(Update update) {
         logger.info("Update is accepted in TestHandler");
         if (update.getMessage() == null) {
             logger.info("Update has no message");
