@@ -37,7 +37,7 @@ public class EmbeddingHandler implements TelegramUpdateHandler {
         final var message = update.getMessage();
         final var text = message.getText();
         final var userName = message.getFrom().getUserName();
-        final var result = "%s: %s".formatted(userName, text);
+        final var date = message.getDate();
 
         final var userId = message.getFrom().getId().toString();
         final var chatId = message.getChatId().toString();
@@ -45,11 +45,12 @@ public class EmbeddingHandler implements TelegramUpdateHandler {
         store.accept(
             Collections.singletonList(
                 new Document(
-                    result,
+                    text,
                     Map.of(
                         "userName", userName,
                         "userId", userId,
-                        "chatId", chatId
+                        "chatId", chatId,
+                        "date", date
                     )
                 )
             )

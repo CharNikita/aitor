@@ -11,11 +11,12 @@ import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
+import java.util.Map;
+
 @Component
 public class LoreHandler implements TelegramUpdateHandler {
     private static final Logger logger = LoggerFactory.getLogger(LoreHandler.class);
     private static final String USER_TEXT_ADVISE = """
-        
         Ниже представлен контекст, окружённый ---------------------
         
         ---------------------
@@ -55,6 +56,7 @@ public class LoreHandler implements TelegramUpdateHandler {
 
         final var modelResponse = chatClient
             .prompt()
+            .toolContext(Map.of("chatId", chatId))
             .advisors(
                 new QuestionAnswerAdvisor(
                     vectorStore,

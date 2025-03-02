@@ -11,6 +11,7 @@ import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.generics.LongPollingBot;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
+import ru.goncharenko.aitor.tools.UserInformationTool;
 
 import java.util.List;
 
@@ -31,9 +32,13 @@ public class AitorApplication {
     }
 
     @Bean
-    public ChatClient chatClient(ChatModel chatModel) {
+    public ChatClient chatClient(
+        ChatModel chatModel,
+        UserInformationTool tool
+    ) {
         return ChatClient.builder(chatModel)
             .defaultSystem("Ты бот-лоровед который знает всё об этом чате. Лор - это вся инфромация которая есть в чате")
+            .defaultTools(tool)
             .defaultAdvisors(new SimpleLoggerAdvisor())
             .build();
     }
