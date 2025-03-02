@@ -8,6 +8,9 @@ spring:
                 enabled: true
                 options:
                     model: mxbai-embed-large
+            chat:
+                options:
+                    model: llama3.1:8b
         qdrant:
             initializeSchema: true
             batching-strategy: TOKEN_COUNT
