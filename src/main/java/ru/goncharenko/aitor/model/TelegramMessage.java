@@ -1,4 +1,4 @@
-package ru.goncharenko.aitor.bot;
+package ru.goncharenko.aitor.model;
 
 
 import org.springframework.data.annotation.Id;
@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document("messages")
-public record Message(
+public record TelegramMessage(
     @Id
     String id,
     @Field("messageId")

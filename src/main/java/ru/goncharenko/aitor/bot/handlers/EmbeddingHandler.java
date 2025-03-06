@@ -1,4 +1,4 @@
-package ru.goncharenko.aitor.bot;
+package ru.goncharenko.aitor.bot.handlers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +7,7 @@ import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import ru.goncharenko.aitor.bot.TelegramUpdateHandler;
 
 import java.util.Collections;
 import java.util.Map;
@@ -23,7 +24,7 @@ public class EmbeddingHandler implements TelegramUpdateHandler {
 
     @Override
     public boolean isAccept(Update update) {
-        if (update.getMessage() == null || update.getMessage().getText() == null) {
+        if (update.hasMessage() || update.getMessage().hasText()) {
             logger.info("Update has no message");
             return false;
         }

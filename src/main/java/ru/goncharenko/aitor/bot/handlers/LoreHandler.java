@@ -1,4 +1,4 @@
-package ru.goncharenko.aitor.bot;
+package ru.goncharenko.aitor.bot.handlers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import ru.goncharenko.aitor.bot.TelegramUpdateHandler;
 
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package ru.goncharenko.aitor.bot;
+package ru.goncharenko.aitor.bot.handlers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,6 +6,8 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import ru.goncharenko.aitor.model.TelegramMessage;
+import ru.goncharenko.aitor.bot.TelegramUpdateHandler;
 
 @Component
 public class PersistingHandler implements TelegramUpdateHandler {
@@ -19,7 +21,7 @@ public class PersistingHandler implements TelegramUpdateHandler {
 
     @Override
     public boolean isAccept(Update update) {
-        if (update.getMessage() == null || update.getMessage().getText() == null) {
+        if (update.hasMessage() || update.getMessage().hasText()) {
             logger.info("Update has no message");
             return false;
         }
@@ -33,7 +35,7 @@ public class PersistingHandler implements TelegramUpdateHandler {
         final var message = update.getMessage();
 
         mongoOperations.save(
-            new Message(
+            new TelegramMessage(
                 null,
                 message.getMessageId().toString(),
                 message.getChatId().toString(),
